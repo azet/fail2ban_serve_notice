@@ -34,7 +34,7 @@ bannedips=`grep 'IP:' /tmp/fail2ban_serve_notice.log | uniq`
 echo -e '\n\n'; for mail in `grep '@' /tmp/fail2ban_serve_notice.log | uniq`; do
 	echo ">> sending mail to $mail"
 	cat << EOM | /usr/sbin/sendmail -t
-To: test@azet.org
+To: ${mail}
 From: ${fail2ban_serve_notice_addr}
 Reply-To: ${replyto_addr}
 Subject: [ABUSE] Network Attack from your IP-Range detected!
