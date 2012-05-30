@@ -1,0 +1,6 @@
+serves warning/information notices to network administrators / NOC / abuse@ if IPs end up in fail2ban.
+
+INSTALL:
+- install as root cronjob, running shortly before fail2ban autocleans 
+  your fail2ban list (this is variable in the fail2ban config.!)
+- done
