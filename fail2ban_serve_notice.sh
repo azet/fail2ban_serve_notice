@@ -31,7 +31,7 @@ for banned_ip in `sudo egrep '(Ban|WARNING)' /var/log/fail2ban.log | tr -d 'Ban'
 done | grep -Eiorh '(mailto:|)([[:alnum:]_.-]+@[[:alnum:]_.-]+?\.[[:alpha:].]{2,6})' | sort | uniq >> /tmp/fail2ban_serve_notice.log
 
 bannedips=`grep 'IP:' /tmp/fail2ban_serve_notice.log | uniq`
-echo -n '\n\n'; for mail in `grep '@' /tmp/fail2ban_serve_notice.log | uniq`; do
+echo -e '\n\n'; for mail in `grep '@' /tmp/fail2ban_serve_notice.log | uniq`; do
 	echo ">> sending mail to $mail"
 	cat << EOM | /usr/sbin/sendmail -t
 To: test@azet.org
