@@ -6,7 +6,7 @@
 # hacked this in 30 mins, not a nice code, i know.. but it works.
 #################################################################
 #debug:
-set -vx
+#set -vx
 
 #config:
 fail2ban_serve_notice_addr="fail2ban_serve_notice@tartaros.azet.org"
