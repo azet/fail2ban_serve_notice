@@ -1,9 +1,11 @@
 #!/bin/sh
-# azet@azet.org
+#
+# <azet@azet.org>
 # MIT License (http://www.opensource.org/licenses/mit-license.php)
 #
 # checks fail2ban logs and mails admin/abuse@ 
 # hacked this in 30 mins, not a nice code, i know.. but it works.
+#
 #################################################################
 #debug:
 #set -vx
@@ -19,7 +21,7 @@ cleanup() {
 }
 trap 'cleanup' 1 2 9 11 15
 
-[ `whoami` = "root" ] || echo 'no superuser privileges.' ; exit 1
+if [ "$(id -u)" != "0" ]; then echo 'no superuser privileges.' ; exit 1; fi
 
 echo ">> current fail2ban log (uniq & sorted output):\n\n"
 cat /var/log/fail2ban.log | sort -n | uniq
