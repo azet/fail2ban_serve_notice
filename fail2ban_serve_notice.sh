@@ -45,6 +45,10 @@ Hi fellow Engineer/Admin/SysOp!
 Please be aware that fail2ban banned one or more of your IPs due to Denial of Service or Break-In attempts!
 You are obliged to fix this issue immediately (http://en.wikipedia.org/wiki/Denial-of-service_attack#Legality)
 
+- http://tools.ietf.org/html/rfc4732
+- http://www.technicallylegal.org/the-legality-of-denial-of-service-attacks/
+- http://nakedsecurity.sophos.com/2010/12/09/are-ddos-distributed-denial-of-service-attacks-against-the-law/
+
 This might be an distributed attack, all currently banned IPs:
 ${bannedips}
 
