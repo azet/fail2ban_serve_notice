@@ -6,7 +6,7 @@
 # hacked this in 30 mins, not a nice code, i know.. but it works.
 #################################################################
 #debug:
-#set -vx
+set -vx
 
 #config:
 fail2ban_serve_notice_addr="fail2ban_serve_notice@tartaros.azet.org"
@@ -26,7 +26,7 @@ echo -e "\n>> proceeding with whois of banned IPs: "
 for banned_ip in `sudo egrep '(Ban|WARNING)' /var/log/fail2ban.log | tr -d 'Ban' | tr -d 'Unban' | awk '{ print $6 }' | uniq | sort -n -u`; do
 	echo "IP: $banned_ip" >> /tmp/fail2ban_serve_notice.log
 	whois $banned_ip | grep abuse@
-	whois -raA $banned_ip | grep tech-c | awk '{ print $2 }' | grep e-mail | awk '{ print $2 }'
+	whois -raA $banned_ip | grep e-mail | awk '{ print $2 }'
 	echo -n '.' 1>&2
 done | grep -Eiorh '(mailto:|)([[:alnum:]_.-]+@[[:alnum:]_.-]+?\.[[:alpha:].]{2,6})' | sort | uniq >> /tmp/fail2ban_serve_notice.log
 

@@ -1,4 +1,6 @@
+INFO:
 serves warning/information notices to network administrators / NOC / abuse@ if IPs end up in fail2ban.
+works with RIPE/ARIN/APNIC & individual abuse@isp.tld whois entries
 
 INSTALL:
 - install as root cronjob, running shortly before fail2ban autocleans 
