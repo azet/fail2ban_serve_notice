@@ -19,6 +19,8 @@ cleanup() {
 }
 trap 'cleanup' 1 2 9 11 15
 
+[ `whoami` = "root" ] || echo 'no superuser privileges.' ; exit 1
+
 echo ">> current fail2ban log (uniq & sorted output):\n\n"
 cat /var/log/fail2ban.log | sort -n | uniq
 
@@ -26,7 +28,7 @@ echo -e "\n>> proceeding with whois of banned IPs: "
 for banned_ip in `egrep '(Ban|WARNING)' /var/log/fail2ban.log | tr -d 'Ban' | tr -d 'Unban' | awk '{ print $6 }' | uniq | sort -n -u`; do
 	echo "IP: $banned_ip" >> /tmp/fail2ban_serve_notice.log
 	whois $banned_ip | grep abuse@
-	whois -raA $banned_ip | grep e-mail | awk '{ print $2 }'
+	whois -raA $banned_ip | grep e-mail
 	echo -n '.' 1>&2
 done | grep -Eiorh '(mailto:|)([[:alnum:]_.-]+@[[:alnum:]_.-]+?\.[[:alpha:].]{2,6})' | sort | uniq >> /tmp/fail2ban_serve_notice.log
 
