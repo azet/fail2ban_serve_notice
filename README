@@ -3,6 +3,7 @@ serves warning/information notices to network administrators / NOC / abuse@ if I
 works with RIPE/ARIN/APNIC & individual abuse@isp.tld whois entries
 
 INSTALL:
+- vi fail2ban_serve_notice.sh -> two line config.
 - install as root cronjob, running shortly before fail2ban autocleans 
   your fail2ban list (this is variable in the fail2ban config.!)
 - done
