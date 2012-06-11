@@ -23,7 +23,7 @@ trap 'cleanup' 1 2 9 11 15
 
 if [ "$(id -u)" != "0" ]; then echo 'no superuser privileges.' ; exit 1; fi
 
-echo ">> current fail2ban log (uniq & sorted output):\n\n"
+echo -e "\n>> current fail2ban log (uniq & sorted output):\n\n"
 cat /var/log/fail2ban.log | sort -n | uniq
 
 echo -e "\n>> proceeding with whois of banned IPs: "
